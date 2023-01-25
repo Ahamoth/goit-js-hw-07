@@ -3,24 +3,19 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 console.log(galleryItems);
-
 const galleryBox = document.querySelector('.gallery');
 const galleryMurkup = createImageGalleryMurkup(galleryItems);
-
 galleryBox.addEventListener('click', onImageClickOpen);
-
 function onImageClickOpen(evt) {
   evt.preventDefault();
   if (evt.target === evt.currentTarget) {
     return
   }
-  
   const originalImg = evt.target.dataset.source;
   const openedImage = basicLightbox.create(`
     <img src="${originalImg}">
 `)
   openedImage.show();
-
   document.addEventListener('keydown', onImageClickClose);
   function onImageClickClose(evt) {
     evt.preventDefault();
@@ -33,7 +28,6 @@ function onImageClickOpen(evt) {
     }  
   }
 }
-
 function createImageGalleryMurkup(galleryItems) {
     return galleryItems
     .map(({preview, original, description}) => {
@@ -48,7 +42,6 @@ function createImageGalleryMurkup(galleryItems) {
       </div>`
     }).join('');
 }
-
 galleryBox.insertAdjacentHTML('beforeend', galleryMurkup);
 
 
